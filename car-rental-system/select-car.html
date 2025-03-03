@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Car Rental System - Select Car</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Car</h1>
+        <div class="car-list">
+            <div class="car">
+                <h2>Car Model 1</h2>
+                <p>Price: $50/day</p>
+                <button onclick="chooseCar('Car Model 1')">Select</button>
+            </div>
+            <div class="car">
+                <h2>Car Model 2</h2>
+                <p>Price: $60/day</p>
+                <button onclick="chooseCar('Car Model 2')">Select</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function chooseCar(carModel) {
+            localStorage.setItem('selectedCar', carModel);
+            window.location.href = 'payment.html';
+        }
+    </script>
+</body>
+</html>
