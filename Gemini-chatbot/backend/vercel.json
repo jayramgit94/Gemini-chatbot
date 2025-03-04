@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/public/index.html" }
+    ],
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ]
+  }
+  

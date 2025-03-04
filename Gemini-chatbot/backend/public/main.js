@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showTypingIndicator() {
         const typingDiv = document.createElement("div");
         typingDiv.classList.add("message", "ai-message", "typing");
-        typingDiv.innerHTML = `<span>AI is typing...</span>`;
+        typingDiv.innerHTML = `<span>AI is thinking...</span>`;
         chatBox.appendChild(typingDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
         return typingDiv;
