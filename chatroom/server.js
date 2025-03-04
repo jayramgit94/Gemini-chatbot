@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const path = require("path"); // Import path module
 const { Server } = require("socket.io");
 
 const app = express();
@@ -9,6 +10,15 @@ const server = http.createServer(app);
 // Enable CORS
 app.use(cors());
 
+// Serve static files (Frontend)
+app.use(express.static(path.join(__dirname, "public")));
+
+// Handle root request by serving `index.html`
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Setup WebSocket server
 const io = new Server(server, {
     cors: {
         origin: "*",
