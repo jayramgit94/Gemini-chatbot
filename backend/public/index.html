@@ -4,16 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            color: white;
+        }
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #ff5722;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e64a19;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            button {
+                font-size: 1rem;
+            }
+        }
+
+        /* Particles.js container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Changed from red */
+        }
+
+
+
+        .container {
+            position: relative;
+        }
+
+        #loadingScreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+
+    </style>
 </head>
 <body>
+    <!-- Background Video -->
+   
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Welcome to AI Chat</h1>
         <button id="startChat">Start Chat</button>
     </div>
+
+    <div id="loadingScreen">Loading...</div>
+
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Script -->
     <script>
         document.getElementById("startChat").addEventListener("click", function () {
             window.location.href = "chat.html";
+        });
+
+        /* Initialize Particles.js */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 200, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 3 }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+
+
+        document.getElementById("startChat").addEventListener("click", function () {
+            document.getElementById("loadingScreen").style.display = "flex"; // Show loading screen
+            
+            setTimeout(() => {
+                window.location.href = "chat.html"; // Redirect to chat page after 1 second
+            }, 3000);
         });
     </script>
 </body>
