@@ -15,6 +15,21 @@
 ## 📂 Project Structure
 
 
+# Gemini Chatbot
+
+🚀 AI chatbot powered by **Google Gemini API** using **Node.js & Express**.
+
+## 📸 Screenshot
+Below is the chatbot interface:
+
+![Chatbot UI](/frontend/assets/img1.png)
+![Chatbot UI](/frontend/assets/img2.png)
+
+## 🔧 Installation
+...
+
+
+
 ---
 
 ## 🔧 Installation & Setup
