@@ -1,12 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 
 const app = express();
-app.use(express.static("public"));
 app.use(express.json());
 app.use(cors());
+
+// Serve frontend files from the correct location
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 // Load API key from .env
 const apiKey = process.env.GEMINI_API_KEY;
@@ -41,6 +44,12 @@ app.post("/chat", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("✅ Server is running on http://localhost:3000");
+// Handle frontend routing
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
